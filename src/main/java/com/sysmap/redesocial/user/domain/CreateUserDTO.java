@@ -8,7 +8,9 @@ import java.util.UUID;
 @Getter
 @Setter
 public record CreateUserDTO(
-        String name
+        String userName,
+        String email,
+        String password
 ) {
 
 }

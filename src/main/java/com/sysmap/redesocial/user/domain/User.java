@@ -12,7 +12,9 @@ import java.util.UUID;
 public class User {
     @Id
     private UUID userId;
-    private String name;
+    private String userName;
+    private String email;
+    private String password;
 
     List<User> friends;
     List<Post> post;
@@ -20,19 +22,18 @@ public class User {
     public User() {
     }
 
-    public User(String name) {
+    public User(String userName, String email, String password) {
         this.userId = UUID.randomUUID();
-        this.name = name;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
         friends = new ArrayList<>();
         post = new ArrayList<>();
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", friends=" + friends +
-                ", post=" + post +
-                '}';
+    public User(UUID userId, String userName, String email) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
     }
 }
