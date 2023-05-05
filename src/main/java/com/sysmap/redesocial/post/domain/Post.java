@@ -1,5 +1,6 @@
 package com.sysmap.redesocial.post.domain;
 
+import com.sysmap.redesocial.comments.domain.Comments;
 import com.sysmap.redesocial.like.domain.Like;
 
 import java.io.Serializable;
@@ -12,8 +13,10 @@ public class Post implements Serializable {
 
     private UUID postId;
     private String postContent;
+    private String uriPostImage;
     private LocalDateTime postDate;
     private List<Like> postLike;
+    private List<Comments> comment;
 
     public Post(String content, LocalDateTime postDate) {
         this.postId = UUID.randomUUID();
@@ -21,6 +24,7 @@ public class Post implements Serializable {
         this.postDate = postDate;
         this.postLike = new ArrayList<>();
     }
+
     @Override
     public String toString() {
         return "Post{" +

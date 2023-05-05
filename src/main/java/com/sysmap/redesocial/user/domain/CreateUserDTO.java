@@ -10,7 +10,8 @@ import java.util.UUID;
 public record CreateUserDTO(
         String userName,
         String email,
-        String password
+        String password,
+        String uriProfilePhoto
 ) {
 
 }

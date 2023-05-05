@@ -15,25 +15,31 @@ public class User {
     private String userName;
     private String email;
     private String password;
-
+    private String uriProfilePhoto;
     List<User> friends;
-    List<Post> post;
+
 
     public User() {
     }
 
-    public User(String userName, String email, String password) {
+    public User(String userName, String email, String password, String uriProfilePhoto) {
         this.userId = UUID.randomUUID();
         this.userName = userName;
         this.email = email;
         this.password = password;
+        this.uriProfilePhoto = uriProfilePhoto;
         friends = new ArrayList<>();
-        post = new ArrayList<>();
+
     }
 
-    public User(UUID userId, String userName, String email) {
-        this.userId = userId;
-        this.userName = userName;
-        this.email = email;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", uriProfilePhoto='" + uriProfilePhoto + '\'' +
+                ", friends=" + friends +
+                '}';
     }
 }
