@@ -1,5 +1,6 @@
-package com.sysmap.redesocial.post.domain;
+package com.sysmap.redesocial.post.data;
 
+import com.sysmap.redesocial.post.domain.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.UUID;

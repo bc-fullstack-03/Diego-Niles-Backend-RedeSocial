@@ -1,9 +1,9 @@
 package com.sysmap.redesocial.user.service;
 
-import com.sysmap.redesocial.user.domain.CreateUserDTO;
-import com.sysmap.redesocial.user.domain.FindUserDTO;
+import com.sysmap.redesocial.user.service.dto.CreateUserDTO;
+import com.sysmap.redesocial.user.service.dto.FindUserDTO;
 import com.sysmap.redesocial.user.domain.User;
-import com.sysmap.redesocial.user.domain.UserRepository;
+import com.sysmap.redesocial.user.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;

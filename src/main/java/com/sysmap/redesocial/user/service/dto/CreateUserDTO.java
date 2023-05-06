@@ -1,4 +1,4 @@
-package com.sysmap.redesocial.user.domain;
+package com.sysmap.redesocial.user.service.dto;
 
 import lombok.Getter;
 import lombok.Setter;

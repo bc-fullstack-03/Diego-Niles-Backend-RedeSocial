@@ -1,6 +1,6 @@
 package com.sysmap.redesocial.post.service;
 
-import com.sysmap.redesocial.post.domain.PostRepository;
+import com.sysmap.redesocial.post.data.PostRepository;
 import org.springframework.stereotype.Service;
 
 @Service

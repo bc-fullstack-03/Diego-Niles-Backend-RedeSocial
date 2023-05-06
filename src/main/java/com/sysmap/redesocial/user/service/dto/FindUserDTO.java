@@ -1,4 +1,6 @@
-package com.sysmap.redesocial.user.domain;
+package com.sysmap.redesocial.user.service.dto;
+
+import com.sysmap.redesocial.user.domain.User;
 
 import java.util.List;
 import java.util.UUID;

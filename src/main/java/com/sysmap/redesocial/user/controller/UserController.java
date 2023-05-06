@@ -1,6 +1,6 @@
 package com.sysmap.redesocial.user.controller;
 
-import com.sysmap.redesocial.user.domain.CreateUserDTO;
+import com.sysmap.redesocial.user.service.dto.CreateUserDTO;
 import com.sysmap.redesocial.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
