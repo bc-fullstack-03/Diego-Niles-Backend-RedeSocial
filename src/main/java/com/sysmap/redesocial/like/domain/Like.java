@@ -1,24 +1,25 @@
 package com.sysmap.redesocial.like.domain;
 
-import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Like {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class Like implements Serializable {
 
-    private UUID likeId;
-    private LocalDateTime likeDate;
-
-
-    public Like() {
-        this.likeId = UUID.randomUUID();
-        this.likeDate = LocalDateTime.now();
-    }
+    private UUID userId;
 
     @Override
     public String toString() {
         return "Like{" +
-                "likeId=" + likeId +
-                ", likeDate=" + likeDate +
+                "userId=" + userId +
                 '}';
     }
 }

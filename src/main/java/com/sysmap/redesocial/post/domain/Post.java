@@ -4,6 +4,7 @@ import com.sysmap.redesocial.comments.domain.Comments;
 import com.sysmap.redesocial.like.domain.Like;
 import com.sysmap.redesocial.post.service.dto.CreatePostDTO;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -18,9 +19,11 @@ import java.util.UUID;
 @Setter
 @EqualsAndHashCode(of = {"postId"})
 @Document(collection = "post")
-public class Post implements Serializable {
 
+public class Post implements Serializable {
+    @Id
     private UUID postId;
+    private UUID userId;
     private String postContent;
     private String uriPostImage;
     private LocalDateTime postDate;

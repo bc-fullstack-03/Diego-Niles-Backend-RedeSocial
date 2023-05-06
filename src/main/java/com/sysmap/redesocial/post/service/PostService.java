@@ -4,8 +4,6 @@ import com.sysmap.redesocial.post.data.PostRepository;
 import com.sysmap.redesocial.post.domain.Post;
 import com.sysmap.redesocial.post.service.dto.CreatePostDTO;
 import com.sysmap.redesocial.post.service.dto.SearchPostDTO;
-import com.sysmap.redesocial.user.domain.User;
-import com.sysmap.redesocial.user.service.dto.FindUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,8 +31,8 @@ public class PostService {
         return postDTO;
     }
 
-    public SearchPostDTO findPostById(@PathVariable UUID userId) {
-        Post post = postRepository.findById(userId).get();
+    public SearchPostDTO findPostById(@PathVariable UUID postId) {
+        Post post = postRepository.findById(postId).get();
         return new SearchPostDTO(post);
     }
 

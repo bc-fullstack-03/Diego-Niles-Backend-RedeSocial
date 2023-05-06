@@ -1,5 +1,6 @@
 package com.sysmap.redesocial.user.domain;
 
+import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

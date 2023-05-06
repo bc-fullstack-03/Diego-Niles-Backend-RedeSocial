@@ -1,32 +1,29 @@
 package com.sysmap.redesocial.comments.domain;
 
-import com.sysmap.redesocial.like.domain.Like;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Comments implements Serializable {
 
-    private UUID commentId;
+    private UUID userId;
     private String commentContent;
-    private LocalDateTime commentDate;
-    private List<Like> commentLike;
+    ;
 
-    public Comments(String commentContent, LocalDateTime commentDate) {
-        this.commentId = UUID.randomUUID();
-        this.commentContent = commentContent;
-        this.commentDate = LocalDateTime.now();
-        this.commentLike = new ArrayList<>();
-    }
-
-    public Comments(UUID commentId, String commentContent, LocalDateTime commentDate, List<Like> commentLike) {
-        this.commentId = commentId;
-        this.commentContent = commentContent;
-        this.commentDate = commentDate;
-        this.commentLike = commentLike;
+    @Override
+    public String toString() {
+        return "Comments{" +
+                "userId=" + userId +
+                ", commentContent='" + commentContent + '\'' +
+                '}';
     }
 }
 
