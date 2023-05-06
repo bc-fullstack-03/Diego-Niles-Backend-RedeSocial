@@ -33,7 +33,7 @@ public class PostService {
         return postDTO;
     }
 
-    public SearchPostDTO findUserById(@PathVariable UUID userId) {
+    public SearchPostDTO findPostById(@PathVariable UUID userId) {
         Post post = postRepository.findById(userId).get();
         return new SearchPostDTO(post);
     }
