@@ -7,9 +7,8 @@ import java.util.List;
 
 public record CreatePostDTO(
         String postContent,
-        String uriPostImage,
-        LocalDateTime postDate,
-        List<Like> postLike
+        String uriPostImage
+
         ) {
 
 }
