@@ -2,6 +2,8 @@ package com.sysmap.redesocial.post.domain;
 
 import com.sysmap.redesocial.comments.domain.Comments;
 import com.sysmap.redesocial.like.domain.Like;
+import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -9,6 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode(of = {"postId"})
+@Document(collection = "post")
 public class Post implements Serializable {
 
     private UUID postId;
