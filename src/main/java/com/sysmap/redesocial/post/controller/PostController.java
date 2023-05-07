@@ -37,6 +37,20 @@ public class PostController {
         return ResponseEntity.status(HttpStatus.FOUND).body(post);
     }
 
+    @PostMapping("/postId/like")
+    @Transactional
+    public ResponseEntity createLikePost(@RequestParam UUID postId) {
+        var post = postService.createLikePost(postId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(post);
+    }
+
+    @PostMapping("/postId/comment")
+    @Transactional
+    public ResponseEntity createCommentPost(@RequestParam UUID postId, String comment) {
+        var post = postService.createCommentPost(postId, comment);
+        return ResponseEntity.status(HttpStatus.CREATED).body(post);
+    }
+
     @DeleteMapping("/postId")
     @Transactional
     public ResponseEntity deletePost(@RequestParam UUID postId) {
