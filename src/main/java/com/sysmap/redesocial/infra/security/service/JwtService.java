@@ -1,5 +1,6 @@
 package com.sysmap.redesocial.infra.security.service;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.security.Key;
 import java.util.Date;
 import java.util.UUID;
+import java.util.function.Function;
 
 @Service
 public class JwtService implements IJwtService {
@@ -26,15 +28,27 @@ public class JwtService implements IJwtService {
                 .compact();
     }
 
-    public boolean isValidToken(String token, UUID userId) {
-        var claims = Jwts.parserBuilder().setSigningKey(genSigninKey()).build().parseClaimsJws(token).getBody();
-        var sub = claims.getSubject();
-        var tExpiration = claims.getExpiration();
+    public boolean isValidToken(String token, String userId) {
+        var sub = getClaim(token, Claims::getSubject);
+        var tExpiration = getClaim(token, Claims::getExpiration);
 
-        return (sub.equals(userId.toString()) && !tExpiration.before(new Date()));
+        if(!sub.equals(userId)){
+            return false;
+        }
+
+        if(tExpiration.before(new Date())){
+            return false;
+        }
+
+        return true;
     }
 
     private Key genSigninKey() {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(KEY));
+    }
+
+    private <T> T getClaim (String token, Function<Claims, T> claimsResolver){
+        var claims = Jwts.parserBuilder().setSigningKey(genSigninKey()).build().parseClaimsJws(token).getBody();
+        return claimsResolver.apply(claims);
     }
 }

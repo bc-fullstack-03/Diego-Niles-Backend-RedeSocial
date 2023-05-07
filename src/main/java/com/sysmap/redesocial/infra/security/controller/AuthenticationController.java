@@ -2,7 +2,6 @@ package com.sysmap.redesocial.infra.security.controller;
 
 import com.sysmap.redesocial.infra.security.service.AuthenticateRequest;
 import com.sysmap.redesocial.infra.security.service.AuthenticateResponse;
-import com.sysmap.redesocial.infra.security.service.AuthenticationService;
 import com.sysmap.redesocial.infra.security.service.IAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
