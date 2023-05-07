@@ -19,12 +19,12 @@ public class UserService {
     private UserRepository userRepository;
 
     public User createUser(CreateUserRequestDTO userDTO) {
-        User user = new User(userDTO.getUserName(), userDTO.email(), userDTO.getPassword(), userDTO.uriProfilePhoto());
+        User user = new User(userDTO.userName(), userDTO.email(), userDTO.password(), userDTO.uriProfilePhoto());
         return userRepository.insert(user);
     }
 
     public User UpdateUser(CreateUserRequestDTO userDTO) {
-        User user = new User(userDTO.getUserName(), userDTO.getEmail(), userDTO.getPassword(), userDTO.uriProfilePhoto());
+        User user = new User(userDTO.userName(), userDTO.email(), userDTO.password(), userDTO.uriProfilePhoto());
         return userRepository.insert(user);
     }
 
