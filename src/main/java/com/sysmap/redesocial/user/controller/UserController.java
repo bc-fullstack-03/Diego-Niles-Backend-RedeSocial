@@ -43,6 +43,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.FOUND).body(user);
     }
 
+    @GetMapping("/email")
+    public ResponseEntity findUserByemail(@RequestParam String email) {
+        var user = userService.findUserByEmail(email);
+        return ResponseEntity.status(HttpStatus.FOUND).body(user);
+    }
+
     @DeleteMapping("userId")
     @Transactional
     public ResponseEntity deleteUser(@RequestParam UUID userId) {

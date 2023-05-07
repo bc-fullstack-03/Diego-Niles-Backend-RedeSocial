@@ -42,6 +42,15 @@ public class UserService {
         return new FindUserResponseDTO(user);
     }
 
+    public FindUserResponseDTO findUserByEmail(@PathVariable String email) {
+        User user = userRepository.findByEmail(email);
+        return new FindUserResponseDTO(user);
+    }
+
+    public User getUser(String email){
+        return userRepository.findByEmail(email);
+    }
+
 
     public void deleteUser(@PathVariable UUID userId) {
         userRepository.deleteById(userId);
