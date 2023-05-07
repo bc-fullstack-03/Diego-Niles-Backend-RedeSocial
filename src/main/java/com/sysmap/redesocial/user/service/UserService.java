@@ -7,6 +7,7 @@ import com.sysmap.redesocial.user.service.dto.FindUserResponseDTO;
 import com.sysmap.redesocial.user.domain.User;
 import com.sysmap.redesocial.user.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -19,15 +20,26 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public User createUser(CreateUserRequestDTO userDTO) {
         User user = new User(userDTO.userName(), userDTO.email(), userDTO.password(), userDTO.uriProfilePhoto());
-        return userRepository.insert(user);
+
+        if (!userRepository.findUserByEmail(userDTO.email().isEmpty())) {
+            return null;
+        }
+
+        var hash = passwordEncoder.encode(userDTO.password());
+
+        user.setPassword(hash);
+
+        return userRepository.save(user);
     }
 
     public User UpdateUser(CreateUserRequestDTO userDTO) {
         User user = new User(userDTO.userName(), userDTO.email(), userDTO.password(), userDTO.uriProfilePhoto());
-        return userRepository.insert(user);
+        return userRepository.save(user);
     }
 
     public List<FindUserResponseDTO> findAllUser() {
