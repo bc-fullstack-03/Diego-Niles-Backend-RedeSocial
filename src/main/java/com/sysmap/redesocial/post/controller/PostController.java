@@ -1,7 +1,7 @@
 package com.sysmap.redesocial.post.controller;
 
 import com.sysmap.redesocial.post.service.PostService;
-import com.sysmap.redesocial.post.service.dto.CreatePostDTO;
+import com.sysmap.redesocial.post.service.dto.CreatePostRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class PostController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity createPost(@RequestBody CreatePostDTO postDTO) {
+    public ResponseEntity createPost(@RequestBody CreatePostRequestDTO postDTO) {
         var post = postService.createPost(postDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(post);
     }

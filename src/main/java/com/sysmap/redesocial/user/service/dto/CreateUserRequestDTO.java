@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public record CreateUserDTO(
+public record CreateUserRequestDTO(
         @NotNull
         String userName,
         @NotNull

@@ -1,6 +1,6 @@
 package com.sysmap.redesocial.user.controller;
 
-import com.sysmap.redesocial.user.service.dto.CreateUserDTO;
+import com.sysmap.redesocial.user.service.dto.CreateUserRequestDTO;
 import com.sysmap.redesocial.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,14 +19,14 @@ public class UserController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity createUser(@RequestBody CreateUserDTO userDTO) {
+    public ResponseEntity createUser(@RequestBody CreateUserRequestDTO userDTO) {
         var user = userService.createUser(userDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
     @PutMapping(path = "/userId")
     @Transactional
-    public ResponseEntity updateUser(@RequestBody CreateUserDTO userDTO) {
+    public ResponseEntity updateUser(@RequestBody CreateUserRequestDTO userDTO) {
         var user = userService.UpdateUser(userDTO);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(user);
     }

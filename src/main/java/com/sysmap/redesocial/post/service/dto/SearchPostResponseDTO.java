@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-public record SearchPostDTO(
+public record SearchPostResponseDTO(
         UUID postId,
         String postContent,
         String uriPostImage,
@@ -17,7 +17,7 @@ public record SearchPostDTO(
         List<Comments> comment
 
 ) {
-    public SearchPostDTO(Post post) {
+    public SearchPostResponseDTO(Post post) {
         this(post.getPostId(), post.getPostContent(), post.getUriPostImage(), post.getPostDate(), post.getPostLike(), post.getComment());
     }
 }

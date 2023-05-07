@@ -1,9 +1,6 @@
 package com.sysmap.redesocial.user.service.dto;
 
-import java.util.List;
-import java.util.UUID;
-
-public record UpdateUserDTO(
+public record UpdateUserRequestDTO(
         String userName,
         String uriProfilePhoto
 

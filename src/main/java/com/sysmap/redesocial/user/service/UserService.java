@@ -1,7 +1,7 @@
 package com.sysmap.redesocial.user.service;
 
-import com.sysmap.redesocial.user.service.dto.CreateUserDTO;
-import com.sysmap.redesocial.user.service.dto.FindUserDTO;
+import com.sysmap.redesocial.user.service.dto.CreateUserRequestDTO;
+import com.sysmap.redesocial.user.service.dto.FindUserResponseDTO;
 import com.sysmap.redesocial.user.domain.User;
 import com.sysmap.redesocial.user.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,28 +18,28 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User createUser(CreateUserDTO userDTO) {
+    public User createUser(CreateUserRequestDTO userDTO) {
         User user = new User(userDTO.getUserName(), userDTO.email(), userDTO.getPassword(), userDTO.uriProfilePhoto());
         return userRepository.insert(user);
     }
 
-    public User UpdateUser(CreateUserDTO userDTO) {
+    public User UpdateUser(CreateUserRequestDTO userDTO) {
         User user = new User(userDTO.getUserName(), userDTO.getEmail(), userDTO.getPassword(), userDTO.uriProfilePhoto());
         return userRepository.insert(user);
     }
 
-    public List<FindUserDTO> findAllUser() {
+    public List<FindUserResponseDTO> findAllUser() {
         List<User> retreatUsersList = userRepository.findAll();
-        List<FindUserDTO> userDTO = new ArrayList<>();
+        List<FindUserResponseDTO> userDTO = new ArrayList<>();
         for (User user : retreatUsersList) {
-            userDTO.add(new FindUserDTO(user));
+            userDTO.add(new FindUserResponseDTO(user));
         }
         return userDTO;
     }
 
-    public FindUserDTO findUserById(@PathVariable UUID userId) {
+    public FindUserResponseDTO findUserById(@PathVariable UUID userId) {
         User user = userRepository.findById(userId).get();
-        return new FindUserDTO(user);
+        return new FindUserResponseDTO(user);
     }
 
 

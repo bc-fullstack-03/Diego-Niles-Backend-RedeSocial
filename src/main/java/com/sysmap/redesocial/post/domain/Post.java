@@ -2,7 +2,7 @@ package com.sysmap.redesocial.post.domain;
 
 import com.sysmap.redesocial.comments.domain.Comments;
 import com.sysmap.redesocial.like.domain.Like;
-import com.sysmap.redesocial.post.service.dto.CreatePostDTO;
+import com.sysmap.redesocial.post.service.dto.CreatePostRequestDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -30,7 +30,7 @@ public class Post implements Serializable {
     private List<Like> postLike;
     private List<Comments> comment;
 
-    public Post(CreatePostDTO postDTO) {
+    public Post(CreatePostRequestDTO postDTO) {
         this.postId = UUID.randomUUID();
         this.postContent = postDTO.postContent();
         this.uriPostImage = postDTO.uriPostImage();
