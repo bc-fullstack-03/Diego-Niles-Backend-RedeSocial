@@ -48,8 +48,21 @@ public class UserController {
         var user = userService.findUserByEmail(email);
         return ResponseEntity.status(HttpStatus.FOUND).body(user);
     }
+    @PostMapping("/friends")
+    @Transactional
+    public ResponseEntity addFriend(@PathVariable UUID userId){
+        var user = userService.addFriend(userId);
+        return ResponseEntity.ok(user);
+    }
 
-    @DeleteMapping("userId")
+    @DeleteMapping("/userId")
+    @Transactional
+    public ResponseEntity deleteFriend(@RequestParam UUID userId) {
+        userService.deleteFriend(userId);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @DeleteMapping("/userId")
     @Transactional
     public ResponseEntity deleteUser(@RequestParam UUID userId) {
         userService.deleteUser(userId);

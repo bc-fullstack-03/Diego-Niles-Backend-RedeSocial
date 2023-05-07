@@ -1,5 +1,7 @@
 package com.sysmap.redesocial.user.service;
 
+import com.sysmap.redesocial.like.domain.Like;
+import com.sysmap.redesocial.post.domain.Post;
 import com.sysmap.redesocial.user.service.dto.CreateUserRequestDTO;
 import com.sysmap.redesocial.user.service.dto.FindUserResponseDTO;
 import com.sysmap.redesocial.user.domain.User;
@@ -47,10 +49,21 @@ public class UserService {
         return new FindUserResponseDTO(user);
     }
 
-    public User getUser(String email){
+    public User getUser(String email) {
         return userRepository.findByEmail(email);
     }
 
+    public User addFriend(@PathVariable UUID userId) {
+        User user = userRepository.findById(userId).get();
+        user.getFriends().add(user);
+        return user;
+    }
+
+    public User deleteFriend(@PathVariable UUID userId) {
+        User user = userRepository.findById(userId).get();
+        user.getFriends().remove(user);
+        return user;
+    }
 
     public void deleteUser(@PathVariable UUID userId) {
         userRepository.deleteById(userId);
