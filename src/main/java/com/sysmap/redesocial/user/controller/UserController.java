@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;
 
@@ -48,14 +49,15 @@ public class UserController {
         var user = userService.findUserByEmail(email);
         return ResponseEntity.status(HttpStatus.FOUND).body(user);
     }
+
     @PostMapping("/friends")
     @Transactional
-    public ResponseEntity addFriend(@PathVariable UUID userId){
+    public ResponseEntity addFriend(@PathVariable UUID userId) {
         var user = userService.addFriend(userId);
         return ResponseEntity.ok(user);
     }
 
-    @DeleteMapping("/userId")
+    @DeleteMapping("/friends/userId")
     @Transactional
     public ResponseEntity deleteFriend(@RequestParam UUID userId) {
         userService.deleteFriend(userId);
@@ -67,6 +69,17 @@ public class UserController {
     public ResponseEntity deleteUser(@RequestParam UUID userId) {
         userService.deleteUser(userId);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PostMapping("/photo/upload")
+    @Transactional
+    public ResponseEntity uploadProfilePhoto(@RequestParam("photo") MultipartFile photo) {
+        try {
+            userService.uploadProfilePhoto(photo);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
 
