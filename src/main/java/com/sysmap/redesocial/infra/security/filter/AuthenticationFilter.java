@@ -31,7 +31,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        if (request.getServletPath().contains("api/v1/users")) {
+        if (request.getServletPath().contains("api/v1/users/createUser")) {
             filterChain.doFilter(request, response);
             return;
         }
