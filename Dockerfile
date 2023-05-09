@@ -1,3 +1,3 @@
 FROM eclipse-temurin:17-jdk-alpine
-ADD target/demo-*.jar demo.jar
-ENTRYPOINT ["java", "-jar", "/demo.jar"]
+ADD target/rede-social-*.jar rede-social.jar
+ENTRYPOINT ["java", "-jar", "/rede-social.jar"]
