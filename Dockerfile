@@ -1,3 +1,3 @@
 FROM eclipse-temurin:17-jdk-alpine
-ADD target/parrot-*.jar parrot.jar
-ENTRYPOINT ["java", "-jar", "/parrot.jar"]
+ADD target/demo-*.jar demo.jar
+ENTRYPOINT ["java", "-jar", "/demo.jar"]
