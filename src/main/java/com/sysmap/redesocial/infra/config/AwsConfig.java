@@ -16,7 +16,7 @@ public class AwsConfig {
     public AmazonS3 amazonS3() {
         return AmazonS3ClientBuilder
                 .standard()
-                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("mykey", "mykey")))
+                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("mykey", "mukey")))
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://s3.localhost.cloud:4566", Regions.US_WEST_2.getName()))
                 .build();
     }
